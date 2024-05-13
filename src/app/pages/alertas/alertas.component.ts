@@ -20,7 +20,7 @@ export class AlertasComponent {
     this.firebaseService.obtenerMensajesEnTiempoReal();
 
     // Escucha los cambios en los mensajes y actualiza la lista de mensajes
-    this.firebaseService.messagesUpdated.subscribe((messages: Mensaje[]) => {
+    this.firebaseService.evento_mensajes_actualizados.subscribe((messages: Mensaje[]) => {
       this.messages = messages;
     });
   }

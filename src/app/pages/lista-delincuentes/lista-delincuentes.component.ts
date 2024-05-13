@@ -20,7 +20,7 @@ export class ListaDelincuentesComponent {
   ngOnInit(): void {
     this.listarCarpetas();
 
-    this.firebaseService.imagesUpdated.subscribe(() => {
+    this.firebaseService.evento_imagenes_actualizadas.subscribe(() => {
       this.carpetas = []
       this.listarCarpetas();
     });
@@ -29,15 +29,15 @@ export class ListaDelincuentesComponent {
   async listarCarpetas() {
     const nombresCarpetas = await this.firebaseService.listarCarpetas();
     for (const carpeta of nombresCarpetas) {
-      const imagenes = await this.firebaseService.listImagesInFolder(carpeta);
+      const imagenes = await this.firebaseService.listarImagenesEnCarpeta(carpeta);
       this.carpetas.push({ nombre: carpeta, images: imagenes });
     }
   }
 
   onFileSelected(event: any, carpeta: string) {
-    const file: File = event.target.files[0];
-    if (file) {
-      this.firebaseService.subirImagen(carpeta, file);
+    const files: File[] = event.target.files;
+    if (files.length > 0) {
+      this.firebaseService.subirImagenes(carpeta, files);
     }
   }
 

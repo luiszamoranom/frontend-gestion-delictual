@@ -16,7 +16,7 @@
             <h2 class="in-carpeta"> {{carpeta.nombre}}</h2>
             <div class="carpeta-subir">
               <p>Subir archivo:</p>
-              <input class="in-carpeta" type="file" (change)="onFileSelected($event, carpeta.nombre)">
+              <input class="in-carpeta" type="file" multiple (change)="onFileSelected($event, carpeta.nombre)">
             </div>
           </div>
 
