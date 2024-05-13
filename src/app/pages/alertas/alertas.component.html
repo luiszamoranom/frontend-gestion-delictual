@@ -1,3 +1,6 @@
-@for(mensaje of messages; track $index){
-  <p>{{mensaje}}</p>
-}
+<div style="overflow-y: scroll">
+  <h1>Alertas</h1>
+  @for(mensaje of messages; track $index){
+    <p>{{mensaje}}</p>
+  }
+</div>

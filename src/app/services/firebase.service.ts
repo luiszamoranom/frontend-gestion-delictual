@@ -125,10 +125,10 @@ export class FirebaseService {
       const mensajes: Mensaje[] = [];
       snapshot.forEach((childSnapshot: DataSnapshot) => {
         const mensaje = childSnapshot.val();
-        mensajes.push(mensaje);
+        mensajes.unshift(mensaje);
       });
-      // Emitir eventos de actualización de mensajes, para actualizar el componente
       this.evento_mensajes_actualizados.emit(mensajes);
     });
   }
+
 }
