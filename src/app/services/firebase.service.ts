@@ -75,7 +75,7 @@ export class FirebaseService {
   }
 
   async listImagesInFolder(folderPath: string): Promise<any[]> {
-    /*
+
     try {
       const folderRef = ref(this.imagesBucket, folderPath);
       const listResult = await listAll(folderRef);
@@ -98,8 +98,7 @@ export class FirebaseService {
       console.error("Error listing images:", error);
       return [];
     }
-    */
-    return []
+
   }
 
   async subirImagen(carpeta: string, archivo: File): Promise<void> {
