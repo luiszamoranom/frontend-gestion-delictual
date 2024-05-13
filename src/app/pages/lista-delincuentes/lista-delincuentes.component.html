@@ -1,1 +1,36 @@
-<h2>Listado de delincuentes</h2>
+<div class="cabecera-delincuentes">
+  <h2>Listado de delincuentes</h2>
+  <div class="agregar-nuevo-delincuente">
+    <input class="agregar-delincuente" type="text" [(ngModel)]="nuevaCarpetaNombre" placeholder="Nombre del delincuente..">
+    <button class="agregar-delincuente" (click)="agregarCarpeta()">Agregar Delincuente</button>
+  </div>
+</div>
+
+<div class="contenido-delincuentes">
+  <div class="delincuentes">
+    @defer (on viewport){
+      @for(carpeta of carpetas; track $index){
+
+        <div class="container-delincuente">
+          <div class="carpeta">
+            <h2 class="in-carpeta"> {{carpeta.nombre}}</h2>
+            <div class="carpeta-subir">
+              <p>Subir archivo:</p>
+              <input class="in-carpeta" type="file" (change)="onFileSelected($event, carpeta.nombre)">
+            </div>
+          </div>
+
+          @defer (on viewport){
+            @for(imagen of carpeta.images; track $index) {
+              <img class="imagenCarpeta" [src]="imagen.downloadURL" [alt]="imagen.name">
+            }
+          } @placeholder (minimum 2s){
+            <p>Cargando malandro {{carpeta.nombre}}...</p>
+          }
+        </div>
+      }
+    } @placeholder (minimum 1s){
+      <p>Cargando malandros...</p>
+    }
+  </div>
+</div>
